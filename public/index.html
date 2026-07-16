@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Video Chat - Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎥 Random Video Chat <span class="badge">DEMO</span></h1>
+    <p class="warning">
+      ⚠️ මේක learning/testing prototype එකක්. Moderation හෝ age-verification නෑ.
+      Public launch කරන්න කලින් ඒවා add කරන්න ඕන.
+    </p>
+
+    <div class="filters-box">
+      <div class="filter-group">
+        <label>ඔයාගේ Gender</label>
+        <select id="genderSelect">
+          <option value="unspecified">කියන්න එපා</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>මොනවගේ කෙනෙක් සොයනවද</label>
+        <select id="lookingForSelect">
+          <option value="any">ඕනම කෙනෙක්</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="filter-group interests-group">
+        <label>Interests (comma වලින් වෙන් කරන්න)</label>
+        <input id="interestsInput" type="text" placeholder="e.g. music, gaming, travel, movies" />
+      </div>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-box">
+        <span class="label">ඔයා (You)</span>
+        <video id="localVideo" autoplay playsinline muted></video>
+      </div>
+      <div class="video-box">
+        <span class="label">Stranger</span>
+        <video id="remoteVideo" autoplay playsinline></video>
+        <div id="statusOverlay" class="status-overlay">
+          කැමරාව enable කරලා "Start" click කරන්න
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="startBtn">▶️ Start</button>
+      <button id="nextBtn" disabled>⏭️ Next</button>
+      <button id="stopBtn" disabled>⏹️ Stop</button>
+      <button id="reportBtn" disabled>🚩 Report</button>
+    </div>
+
+    <div id="statusText" class="status-text">Ready</div>
+    <div id="sharedInterests" class="shared-interests"></div>
+
+    <div class="chat-box">
+      <div class="chat-header">💬 Chat</div>
+      <div id="chatMessages" class="chat-messages">
+        <div class="chat-placeholder">Partner කෙනෙක් හම්බුනාට පස්සේ chat කරන්න පුළුවන්</div>
+      </div>
+      <form id="chatForm" class="chat-input-row">
+        <input
+          id="chatInput"
+          type="text"
+          placeholder="Message එකක් type කරන්න..."
+          disabled
+          autocomplete="off"
+        />
+        <button id="chatSendBtn" type="submit" disabled>➤</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
